@@ -70,3 +70,10 @@ opButtons.forEach(button => button.addEventListener('click', () =>{
         }
     }
 }))
+
+const clearButton =document.querySelector('.clear');
+clearButton.addEventListener('click',() =>{
+    display.innerText = '';
+    operator=''
+    firstNumber=null;
+})
