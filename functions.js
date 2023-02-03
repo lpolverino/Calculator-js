@@ -14,7 +14,7 @@ const divide = function (a, b) {
     return a/b
 }
 
-const operator = function(operand, a , b){
+const operate = function(operand, a , b){
     switch (operand){
         case '+':
              return add(a,b);
