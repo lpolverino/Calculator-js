@@ -32,7 +32,7 @@ const operate = function(operand, a , b){
              return multiply(a,b);
              break;
         case '/':
-             return divide(a,b);
+             return b === 0 ? "you cannot divide by zero":divide(a,b);
              break;
         default:
             console.log(`error uknow operand ${operand}`);
@@ -41,15 +41,15 @@ const operate = function(operand, a , b){
 
 const buttons = document.querySelectorAll('.button-number');
 const display = document.querySelector('p');
-console.log(buttons);
-console.log(display);
 let displayNumber;
 let firstNumber=null;
 let operator;
+let itsResult = false;
 
 buttons.forEach(button => button.addEventListener('click',() =>{
-    if(display.innerText.startsWith('D')){
+    if(display.innerText.startsWith('D') || itsResult){
         display.innerText = '';
+        itsResult = false;
     }
     display.innerText += button.textContent;
     displayNumber = display.innerText;
@@ -58,16 +58,16 @@ buttons.forEach(button => button.addEventListener('click',() =>{
 const opButtons = document.querySelectorAll('.button-operator');
 opButtons.forEach(button => button.addEventListener('click', () =>{
     if(button.textContent ==='='){
-        display.innerText = operate(operator, firstNumber, displayNumber)
+        display.innerText = operate(operator, firstNumber, displayNumber);
+        itsResult = true;
     }else{
         if(firstNumber == null){
             firstNumber = display.innerText;
             display.innerText=''
         }else{
-            //opera con first number y guardalo ahi
             firstNumber = operate(operator, firstNumber, displayNumber);
-            display.innerText = '';
-            displayNumber = display.innerText;
+            display.innerText = firstNumber;
+            itsResult = true;
         }
         operator = button.textContent;
     }
