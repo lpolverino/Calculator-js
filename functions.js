@@ -79,3 +79,10 @@ clearButton.addEventListener('click',() =>{
     operator=''
     firstNumber=null;
 })
+
+const backButton = document.querySelector('.backspace');
+backButton.addEventListener('click',()=>{
+    if(display.innerText.length > 0){
+        display.innerText = display.innerText.slice(0,-1);
+    }
+})
