@@ -16,10 +16,10 @@ const divide = function (a, b) {
 
 const operate = function(operand, a , b){
     if(typeof a != 'number'){
-        a = parseInt(a);
+        a = +a;
     }
     if(typeof b != 'number'){
-        b = parseInt(b);
+        b = +b;
     }
     switch (operand){
         case '+':
@@ -45,6 +45,7 @@ let displayNumber;
 let firstNumber=null;
 let operator;
 let itsResult = false;
+let isFLoat = false;
 
 buttons.forEach(button => button.addEventListener('click',() =>{
     if(display.innerText.startsWith('D') || itsResult){
@@ -78,11 +79,25 @@ clearButton.addEventListener('click',() =>{
     display.innerText = '';
     operator=''
     firstNumber=null;
-})
+});
 
 const backButton = document.querySelector('.backspace');
 backButton.addEventListener('click',()=>{
     if(display.innerText.length > 0){
+        display.innerText.endsWith('.') ? isFLoat=false:1;
         display.innerText = display.innerText.slice(0,-1);
     }
-})
+});
+
+const dotButton = document.querySelector('.dot');
+dotButton.addEventListener('click',()=>{
+    if(!isFLoat){
+        if(display.innerText.length > 0){
+            isFLoat = true;
+            display.innerText += '.';
+        } else{
+            isFLoat= true;
+            display.innerText = '0.';
+        }    
+    }
+});
