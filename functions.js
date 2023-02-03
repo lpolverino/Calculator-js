@@ -60,14 +60,16 @@ opButtons.forEach(button => button.addEventListener('click', () =>{
     if(button.textContent ==='='){
         display.innerText = operate(operator, firstNumber, displayNumber)
     }else{
-        operator = button.textContent;
         if(firstNumber == null){
             firstNumber = display.innerText;
             display.innerText=''
         }else{
             //opera con first number y guardalo ahi
             firstNumber = operate(operator, firstNumber, displayNumber);
+            display.innerText = '';
+            displayNumber = display.innerText;
         }
+        operator = button.textContent;
     }
 }))
 
