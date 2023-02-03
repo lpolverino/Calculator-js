@@ -4,4 +4,9 @@
 }
 button{
     font-size: 25px;
+    background-color: bisque;
+}
+
+.button-operator, .clear{
+    background-color: aquamarine;
 }
