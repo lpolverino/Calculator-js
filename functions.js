@@ -32,7 +32,7 @@ const operate = function(operand, a , b){
              return multiply(a,b);
              break;
         case '/':
-             return b === 0 ? "you cannot divide by zero":divide(a,b);
+             return b === 0 ? "you cannot divide by zero":divide(a,b).toFixed(3);
              break;
         default:
             console.log(`error uknow operand ${operand}`);
