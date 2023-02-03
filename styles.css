@@ -1,0 +1,7 @@
+.buttons{
+    display: grid;
+    grid-row-gap: 6px;
+}
+button{
+    font-size: 25px;
+}
